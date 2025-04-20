@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Input Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <form action = "{% url 'form' %}" method="post">
+        {% csrf_token %}
+        <h2>Data Input Form</h2>
+
+        <label for="unnamed">Unnamed:</label>
+        <input type="number" id="unnamed" name="unnamed">
+
+        <label for="id-orig-p">ID Orig P:</label>
+        <input type="text" id="id-orig-p" name="id-orig-p">
+
+        <label for="id-resp-p">ID Resp P:</label>
+        <input type="text" id="id-resp-p" name="id-resp-p">
+
+        <label for="proto">Proto:</label>
+        <input type="text" id="proto" name="proto">
+
+        <label for="service">Service:</label>
+        <input type="text" id="service" name="service">
+
+        <label for="flow-duration">Flow Duration:</label>
+        <input type="number" id="flow-duration" name="flow-duration">
+
+        <label for="fwd-pkts-tot">FWD Pkts Total:</label>
+        <input type="number" id="fwd-pkts-tot" name="fwd-pkts-tot">
+
+        <label for="bwd-pkts-tot">BWD Pkts Total:</label>
+        <input type="number" id="bwd-pkts-tot" name="bwd-pkts-tot">
+
+        <label for="fwd-data-pkts-tot">FWD Data Pkts Total:</label>
+        <input type="number" id="fwd-data-pkts-tot" name="fwd-data-pkts-tot">
+
+        <label for="bwd-data-pkts-tot">BWD Data Pkts Total:</label>
+        <input type="number" id="bwd-data-pkts-tot" name="bwd-data-pkts-tot">
+
+        <!-- You can continue adding other inputs similarly -->
+        
+        <button type="submit">Submit</button>
+    </form>
+    <div>
+        {% if predict %}
+            {% if predict == 0 %}
+            <h2>minimum</h2>
+            {% else %}
+            <h2>maximum</h2>
+            {% endif %}
+        {% endif %}
+    </div>
+</body>
+</html>
